@@ -12,6 +12,8 @@ import java.util.Locale;
 
 public class PlaywrightFactory {
 
+    Page page;
+
     @Parameters({"browserName"})
     @BeforeClass
     public void initPage(String browserName) {
@@ -19,14 +21,17 @@ public class PlaywrightFactory {
         switch (browserName.toLowerCase()) {
             case "chrome":
                 Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
-                Page page = browser.newPage();
-                page.navigate("https://www.google.com");
-                System.out.println(page.title());
+                page = browser.newPage();
+
                 break;
             case "firefox":
 
                 break;
         }
 
+    }
+
+    public Page getPage() {
+        return page;
     }
 }
