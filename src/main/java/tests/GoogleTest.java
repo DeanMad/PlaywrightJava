@@ -6,11 +6,13 @@ import static utilities.Utilities.*;
 
 class GoogleTest extends PageObject {
 
+    private String googleUrl = getUserData().getProperty("googleUrl");
+
     @Test(description = "Verify header", priority = 1)
     @Severity(SeverityLevel.NORMAL)
     @Description("Verify header")
     public void verifyTitleGoogle()  {
-        getPage().navigate("https://www.google.com");
+        getPage().navigate(googleUrl);
         System.out.println(getPage().title());
         assertTrueWithScreenshot(getPage().title().contentEquals("Google"), getPage());
     }
