@@ -7,10 +7,10 @@ import static utilities.Utilities.takeScreenshot;
 
 public class Assert extends Assertion {
 
-    Browser browser;
+    Page page;
 
     public Assert(WebDriver driver){
-        this.browser = browser;
+        this.page = page;
     }
 
     @Override
