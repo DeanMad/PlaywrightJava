@@ -1,0 +1,52 @@
+package utilities;
+
+import org.testng.AssertJUnit;
+import org.testng.asserts.Assertion;
+import static utilities.Utilities.sleep;
+import static utilities.Utilities.takeScreenshot;
+
+public class Assert extends Assertion {
+
+    Page page;
+
+    public Assert(WebDriver driver){
+        this.page = page;
+    }
+
+    @Override
+    public void assertEquals(String actual, String expected) {
+        sleep(1000);
+        takeScreenshot(driver, expected);
+        try {
+            AssertJUnit.assertEquals(actual, expected);
+        }
+        catch (Exception exception) {
+            System.out.println("Actual: " + actual + " Expected: " + expected);
+        }
+    }
+
+    @Override
+    public void assertTrue(boolean condition) {
+        sleep(1000);
+        takeScreenshot(driver);
+        try {
+            AssertJUnit.assertTrue(condition);
+        } catch (Exception exception) {
+            System.out.println("Assertion is false");
+        }
+    }
+
+    @Override
+    public void assertFalse(boolean condition){
+            sleep(1000);
+            takeScreenshot(driver);
+            try {
+                AssertJUnit.assertFalse(condition);
+            }
+            catch (Exception exception) {
+                System.out.println("Expected False but assertion is true");
+            }
+    }
+
+
+}
