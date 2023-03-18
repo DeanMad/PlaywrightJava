@@ -12,7 +12,7 @@ import java.util.Properties;
 
 import static org.testng.AssertJUnit.assertTrue;
 
-public class Utilities extends PlaywrightFactory {
+public class Utilities {
 
     @Attachment(value = "screenshot", type = "image/png")
     public static void takeScreenshots(Page page) {
@@ -26,11 +26,6 @@ public class Utilities extends PlaywrightFactory {
                 InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void assertTrueWithScreenshot(Boolean condition, Page page) {
-        takeScreenshots(page);
-        assertTrue(condition);
     }
 
     public static Properties getUserData() {
