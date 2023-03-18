@@ -1,32 +1,25 @@
 package utilities;
 
 import com.microsoft.playwright.*;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
 
-public class PlaywrightFactory {
+public class PlaywrightFactory extends BaseTest{
 
-    Page page;
-
-    @Parameters({"browserName"})
-    @BeforeClass
-    public void initPage(String browserName) {
+    public Page initPage(String browserName) {
         Playwright playwright = Playwright.create();
         switch (browserName.toLowerCase()) {
             case "chrome":
-                Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
-                BrowserContext context = browser.newContext();
+                browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+                context = browser.newContext();
                 page = context.newPage();
-
                 break;
             case "firefox":
-
+                browser = playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(false));
+                context = browser.newContext();
+                page = context.newPage();
                 break;
         }
 
-    }
-
-    public Page getPage() {
         return page;
     }
+
 }
