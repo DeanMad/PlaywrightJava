@@ -2,9 +2,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name = "mySuite">
     <test name="test">
-        <parameter name="browserName" value="chrome"></parameter>
+        <parameter name="browserName" value="chrome"/>
         <classes>
-        <class name = "tests.GoogleTest"/>
+        <class name = "tests.GoogleTests"/>
         </classes>
     </test>
 </suite>

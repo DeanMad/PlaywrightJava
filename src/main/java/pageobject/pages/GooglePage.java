@@ -2,12 +2,16 @@ package pageobject.pages;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import utilities.Assertion;
 
-public class GooglePage {
+import static utilities.BaseTest.assertion;
 
-    private Page page;
+public class GooglePage extends Assertion {
+
+    private final Page page;
 
     public GooglePage(Page page){
+        super(page);
         this.page = page;
     }
 
@@ -16,8 +20,14 @@ public class GooglePage {
     }
 
     public Locator getNbaSearchTitleLocator(){
-        return page.locator("#sports-app > div > div.imso-loa.imso-lhof.QMSMXe.Wrsj9b > div > div > div > div > div.S9Uogc > div.ofy7ae");
+        return page.locator("//span[text() = 'NBA' and @dir = itr]");
     }
 
+    public void verifyGoogleTitle() {
+        assertion.assertTrue(page.title().contentEquals("Google"));
+    }
 
+    public void verifyNbaSearchPage() {
+        assertion.assertTrue(getNbaSearchTitleLocator().isVisible());
+    }
 }

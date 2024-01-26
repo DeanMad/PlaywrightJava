@@ -13,15 +13,14 @@ public class BaseTest {
     Page page;
     Browser browser;
     BrowserContext context;
-    public static Assert assertion;
+    public static Assertion assertion;
 
     @Parameters({"browserName"})
     @BeforeClass
     public void initTestCases(@Optional("chrome") String browserName){
         playwrightFactory = new PlaywrightFactory();
         page = playwrightFactory.initPage(browserName);
-        assertion = new Assert(page);
-
+        assertion = new Assertion(page);
     }
 
     public Page getPage() {

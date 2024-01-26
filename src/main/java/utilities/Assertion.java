@@ -2,14 +2,14 @@ package utilities;
 
 import com.microsoft.playwright.Page;
 import org.testng.AssertJUnit;
-import org.testng.asserts.Assertion;
+
 import static utilities.Utilities.takeScreenshots;
 
-public class Assert extends Assertion {
+public class Assertion extends org.testng.asserts.Assertion {
 
     Page page;
 
-    public Assert(Page page) {
+    public Assertion(Page page) {
         this.page = page;
     }
 
